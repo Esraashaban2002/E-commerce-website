@@ -1,19 +1,17 @@
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { Home, Login, Register } from "./pages";
 
 function App() {
   return (
     <div className="App">
-
-       <BrowserRouter>
+       <Router>
        <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
        </Routes>
-       </BrowserRouter>
-
+       </Router>
     </div>
   );
 }
