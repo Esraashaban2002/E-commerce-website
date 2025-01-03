@@ -1,10 +1,12 @@
 import React from 'react'
-import { Footer, Navbar } from '../components'
+import { Footer, Main, Navbar, Product } from '../components'
 
 function Home() {
   return (
-    <div>
+    <div className='position-relative'>
       <Navbar />
+      <Main />
+      <Product />
       <Footer />
     </div>
   )

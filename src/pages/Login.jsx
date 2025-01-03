@@ -7,15 +7,15 @@ function Login() {
     <div>
       <Navbar />
       <div className='container'>
-      <h2 className='text-center fs-1 fw-bolder mt-4'>Login</h2>
+      <h2 className='text-center fs-1 fw-bolder mt-5'>Login</h2>
       <hr/>
       <form className='mt-5 mx-auto ' style={{width:"350px"}} >
         <div className="mb-4">
-            <label for="exampleInputEmail1" className="form-label">Email address</label>
+            <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
             <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name@example.com" />
         </div>
         <div className="mb-4">
-            <label for="exampleInputPassword1" className="form-label">Password</label>
+            <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
             <input type="password" className="form-control" id="exampleInputPassword1" placeholder='password'/>
         </div>
         <div className="mb-4">
