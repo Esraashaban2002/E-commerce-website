@@ -1,5 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import { FaCartShopping, FaUserPlus } from "react-icons/fa6"; // import icons
+import { MdLogin } from 'react-icons/md';
 
 function Navbar() {
 
@@ -27,14 +29,17 @@ function Navbar() {
       </ul>
       <form className="d-flex gap-3" role="search">
         <button className="btn btn-outline-dark d-flex align-items-center"> 
-          <span className="material-symbols-outlined me-1 fw-semibold"> login </span>
-            <NavLink className="nav-link" to="/login" >Login</NavLink></button>
+          {/* icon */}
+          <MdLogin size={20} /> 
+          <NavLink className="nav-link ms-2" to="/login" >Login</NavLink></button>
         <button className="btn btn-outline-dark d-flex align-items-center">
-          <span className="material-symbols-outlined me-1 fw-semibold"> person_add </span>
-           <NavLink className="nav-link" to="/register" >Register</NavLink></button>
+          {/* icon */}
+          <FaUserPlus size={20} />
+          <NavLink className="nav-link ms-2" to="/register" >Register</NavLink></button>
         <button className="btn btn-outline-dark d-flex align-items-center">
-        <span className="material-symbols-outlined me-1 fw-semibold">shopping_cart </span>
-            <NavLink className="nav-link" to="/cart" >Cart (0)</NavLink> </button>
+          {/* icon */}
+          <FaCartShopping size={20} /> 
+          <NavLink className="nav-link ms-2" to="/cart" >Cart (0)</NavLink> </button>
       </form>
     </div>
   </div>
