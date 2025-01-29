@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "6f85",
+      "username": "Esraa Shaban",
+      "email": "esraa@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "82fa",
+      "username": "Alaa",
+      "email": "alaa@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "3b23",
+      "username": "Ali Ahmed",
+      "email": "ali@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "1fa9",
+      "username": "Amr",
+      "email": "amr@gmail.com",
+      "password": "12345678"
+    }
+  ]
+}

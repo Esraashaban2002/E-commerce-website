@@ -6,7 +6,22 @@ function Products() {
   const [filter, setFilter] = useState(data);
   const componentMounted = useRef(true); 
 
-
+  const categoryList = [
+    {id: 1 , title: "All"},
+    {id: 2 , title: "Men's Clothing"},
+    {id: 3 , title: "Women's Clothing"},
+    {id: 4 , title: "Jewelery"},
+    {id: 5 , title: "Electronics"},
+  ]
+  const CategoryListMenu = categoryList.map((item) =>{
+    return (
+      <button key={item.id}
+      className="btn btn-outline-dark btn-sm m-2"
+      onClick={() => filterProduct(item.title)}>
+        {item.title}
+      </button>
+    )
+  })
 
   useEffect(() => {
     const getProducts = async () => {
@@ -24,48 +39,19 @@ function Products() {
     getProducts();
   }, []);
 
-    const filterProduct = (category) => {
-        const updatedList = data.filter((item) => item.category === category);
-        setFilter(updatedList);
-    };
-
-    const ShowProducts = () => { 
-        return (
-            <>
-            <div className="buttons text-center py-5">
-            <button
-                className="btn btn-outline-dark btn-sm m-2"
-                onClick={() => setFilter(data)}
-            >
-                All
-            </button>
-            <button
-                className="btn btn-outline-dark btn-sm m-2"
-                onClick={() => filterProduct("men's clothing")}
-            >
-                Men's Clothing
-            </button>
-            <button
-                className="btn btn-outline-dark btn-sm m-2"
-                onClick={() => filterProduct("women's clothing")}
-            >
-                Women's Clothing
-            </button>
-            <button
-                className="btn btn-outline-dark btn-sm m-2"
-                onClick={() => filterProduct("jewelery")}
-            >
-                Jewelery
-            </button>
-            <button
-                className="btn btn-outline-dark btn-sm m-2"
-                onClick={() => filterProduct("electronics")}
-            >
-                Electronics
-            </button>
-            </div>
-
-            {filter.map((product) => {
+  const filterProduct = (category) => {
+    if(category === "All"){
+      setFilter(data)
+    }else{
+      const updatedList = data.filter((item) => item.category === category.toLowerCase());
+      setFilter(updatedList);
+    }
+  };
+  
+  function ShowProducts(){
+      return (
+        <>
+        {filter.map((product) => {
                 return(
                     <div className="col-md-4 col-sm-6 col-xs-8 col-12 mb-4" id={product.id} key={product.id}>
                         <div className="card border-1 text-center h-100 "  key={product.id}>
@@ -86,9 +72,9 @@ function Products() {
                 )
             })}
         </>
-        )
+      );
     }
-
+  
   return (
     <div className="container mt-5 pb-5">
     <div className="row">
@@ -98,7 +84,10 @@ function Products() {
       </div>
     </div>
     <div className="row justify-content-center">
-       <ShowProducts />
+      <div className="buttons text-center py-5">
+        {CategoryListMenu}
+      </div>
+      <ShowProducts />
     </div>
   </div>
   )

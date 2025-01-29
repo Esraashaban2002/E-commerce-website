@@ -6,6 +6,12 @@ import Jewelery from '../assets/pexels-photo-1927259.jpeg'
 import Electronics from '../assets/pexels-photo-356056.jpeg'
 
 function About() {
+    const product =[
+        {id: 1 , title: "Mens's Clothing" , image: Mens},
+        {id: 2 , title: "Women's Clothing" , image: Women},
+        {id: 3 , title: "Jewelery" , image: Jewelery},
+        {id: 4 , title: "Electronics" , image: Electronics},
+    ]
   return (
     <div className='position-relative'>
       <Navbar />
@@ -23,55 +29,24 @@ function About() {
         </p>
 
         <div className='my-5 '>
-            <h1 className='text-center my-3'>Our Products</h1>
-
+           <h1 className='text-center my-3'>Our Products</h1>
            <div className="row my-5">
-
-            <div className="col-md-3 col-sm-6 mb-3 px-3">
-            <div className="card h-100">
-                <img src={Mens}
-                      className="card-img-top img-fluid" alt="Card"  height={160} />
-                <div className="card-body">
-                    <h5 className="card-title text-center">Mens's Clothing</h5>
-                </div>
-            </div>
-            </div>
-            
-            <div className="col-md-3 col-sm-6 mb-3 px-3">
-            <div className="card h-100">
-                <img src={Women}
-                      className="card-img-top img-fluid" alt="Card"  height={160} />
-                <div className="card-body">
-                    <h5 className="card-title text-center">Women's Clothing</h5>
-                </div>
-            </div>
-            </div>
-          
-            <div className="col-md-3 col-sm-6 mb-3 px-3">
-            <div className="card h-100">
-                <img src={Jewelery}
-                      className="card-img-top img-fluid" alt="Card"  height={160} />
-                <div className="card-body">
-                    <h5 className="card-title text-center">Jewelery</h5>
-                </div>
-            </div>
-            </div>
-
-            <div className="col-md-3 col-sm-6 mb-3 px-3">
-            <div className="card h-100">
-                <img src={Electronics}
-                      className="card-img-top img-fluid" alt="Card"  height={160} />
-                <div className="card-body">
-                    <h5 className="card-title text-center">Electronics</h5>
-                </div>
-            </div>
-            </div>
-
-
+            {product.map((item) => {
+                return (
+                <div className="col-md-3 col-sm-6 mb-3 px-3" key={item.id} >
+                    <div className="card h-100">
+                        <img src={item.image}
+                            className="card-img-top img-fluid" alt="Card"  height={160} />
+                        <div className="card-body">
+                            <h5 className="card-title text-center">{item.title}</h5>
+                        </div>
+                    </div>
+                </div> 
+                )
+            })}
            </div>
         </div>
       </div> 
-
       <Footer />
     </div>
   )
