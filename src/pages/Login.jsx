@@ -20,18 +20,19 @@ function Login() {
   const handleSubmit = async (e)=>{
     e.preventDefault()
     try {
-      const response = await axios.get(`https://679b8ac633d3168463243c22.mockapi.io/users`, {
-        params: { email: formData.email, password: formData.password }
-      });
-      if (response.data.length > 0) {
+      const response = await axios.get("https://679b8ac633d3168463243c22.mockapi.io/users");
+      const userData = response.data.find(user => user.email === formData.email);
+      if (userData) {
         const userData = response.data[0]
-        setMessage('User Login successfully!');
-        dispatch({ type: "LOGIN_SUCCESS", payload: userData });
-        setTimeout(() => {
-          navigate('/dashboard'); 
-        }, 1000);
+        if (userData.password === formData.password) {
+          setMessage("User logged in successfully!");
+          dispatch({ type: "LOGIN_SUCCESS", payload: userData });
+          setTimeout(() => navigate("/dashboard"), 1000);
+        } else {
+          setMessage("Invalid email or password.");
+        }
       } else {
-        setMessage('Invalid email or password.');
+        setMessage("Invalid email or password.");
       }
     } catch (error) {
       console.error('Error:', error);
