@@ -23,6 +23,12 @@
       "username": "Amr",
       "email": "amr@gmail.com",
       "password": "12345678"
+    },
+    {
+      "username": "Omar",
+      "email": "omar@gmail.com",
+      "password": "12345678",
+      "id": "tFUiXME"
     }
   ]
 }

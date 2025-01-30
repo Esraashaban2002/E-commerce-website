@@ -13,7 +13,7 @@ function About() {
         {id: 4 , title: "Electronics" , image: Electronics},
     ]
   return (
-    <div className='position-relative'>
+    <div>
       <Navbar />
       <div className="container py-5">
         <h1 className='text-center'>About Us</h1>

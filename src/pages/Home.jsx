@@ -3,7 +3,7 @@ import { Footer, Main, Navbar, Product } from '../components'
 
 function Home() {
   return (
-    <div className='position-relative'>
+    <div>
       <Navbar />
       <Main />
       <Product />

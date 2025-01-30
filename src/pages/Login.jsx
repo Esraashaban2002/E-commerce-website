@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { Footer, Navbar } from '../components'
 import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
 function Login() {
   const [formData, setFormData] = useState({email: "" , password: ""})
   const [message , setMessage] = useState('')
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleChange = (e)=>{
@@ -20,9 +22,11 @@ function Login() {
     try {
       const response = await axios.get(`http://localhost:5000/users?email=${formData.email}&password=${formData.password}`);
       if (response.data.length > 0) {
+        const userData = response.data[0]
         setMessage('User Login successfully!');
+        dispatch({ type: "LOGIN_SUCCESS", payload: userData });
         setTimeout(() => {
-          navigate('/'); 
+          navigate('/dashboard'); 
         }, 1000);
       } else {
         setMessage('Invalid email or password.');

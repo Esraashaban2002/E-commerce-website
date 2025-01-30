@@ -1,10 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom'
+import { addCart } from '../redux/action';
 
 function Products() {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState(data);
   const componentMounted = useRef(true); 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const authState = useSelector((state) => state.auth);
+  const addProduct = (product) => {
+    if (!authState.isAuthenticated) {
+      navigate("/login"); // Redirect to login if user is not authenticated
+    } else {
+      dispatch(addCart(product));
+    }
+  };
 
   const categoryList = [
     {id: 1 , title: "All"},
@@ -65,7 +77,7 @@ function Products() {
                         </ul>
                         <div className="card-body ">
                             <Link to={"/product/" + product.id} className="btn btn-dark me-2">Buy Now</Link>
-                            <button  className="btn btn-dark">Add to Cart</button>
+                            <button  className="btn btn-dark" onClick={() => addProduct(product)}>Add to Cart</button>
                         </div>
                         </div>
                 </div>
