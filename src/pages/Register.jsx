@@ -23,10 +23,8 @@ function Register() {
       const existingUser = checkResponse.data.find(user => user.email === formData.email);
   
       if (existingUser) {
-        // If email exists, set an error message
         setMessage('Email already exists. Please login instead.');
       } else {
-        // Send POST request to the fake API
         await axios.post('https://679b8ac633d3168463243c22.mockapi.io/users', formData);
         setMessage('User registered successfully!');
         setTimeout(() => {
