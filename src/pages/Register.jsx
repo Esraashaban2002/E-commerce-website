@@ -19,13 +19,14 @@ function Register() {
   const handleSubmit = async (e)=>{
     e.preventDefault()
     try {
-      const checkResponse = await axios.get(`http://localhost:8080/users?email=${formData.email}`);
+      const checkResponse = await axios.get(`https://679b8ac633d3168463243c22.mockapi.io/users`, {
+      params: { email: formData.email}});
       if (checkResponse.data.length > 0) {
         // If email exists, set an error message
         setMessage('Email already exists. Please login instead.');
       } else {
         // Send POST request to the fake API
-        await axios.post('http://localhost:8080/users', formData);
+        await axios.post('https://679b8ac633d3168463243c22.mockapi.io/users', formData);
         setMessage('User registered successfully!');
         setTimeout(() => {
           navigate('/login'); 

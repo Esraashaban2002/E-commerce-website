@@ -20,7 +20,9 @@ function Login() {
   const handleSubmit = async (e)=>{
     e.preventDefault()
     try {
-      const response = await axios.get(`http://localhost:8080/users?email=${formData.email}&password=${formData.password}`);
+      const response = await axios.get(`https://679b8ac633d3168463243c22.mockapi.io/users`, {
+        params: { email: formData.email, password: formData.password }
+      });
       if (response.data.length > 0) {
         const userData = response.data[0]
         setMessage('User Login successfully!');
