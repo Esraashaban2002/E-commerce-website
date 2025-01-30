@@ -19,9 +19,10 @@ function Register() {
   const handleSubmit = async (e)=>{
     e.preventDefault()
     try {
-      const checkResponse = await axios.get(`https://679b8ac633d3168463243c22.mockapi.io/users`, {
-      params: { email: formData.email}});
-      if (checkResponse.data.length > 0) {
+      const checkResponse = await axios.get(`https://679b8ac633d3168463243c22.mockapi.io/users`);
+      const existingUser = checkResponse.data.find(user => user.email === formData.email);
+  
+      if (existingUser) {
         // If email exists, set an error message
         setMessage('Email already exists. Please login instead.');
       } else {
