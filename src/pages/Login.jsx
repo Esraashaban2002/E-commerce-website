@@ -17,16 +17,17 @@ function Login() {
     }));
   }
 
-  const handleSubmit = async (e)=>{
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.get("https://679b8ac633d3168463243c22.mockapi.io/users");
+   
       const userData = response.data.find(user => user.email === formData.email);
       if (userData) {
-        const userData = response.data[0]
         if (userData.password === formData.password) {
           setMessage("User logged in successfully!");
           dispatch({ type: "LOGIN_SUCCESS", payload: userData });
+
           setTimeout(() => navigate("/dashboard"), 1000);
         } else {
           setMessage("Invalid email or password.");
@@ -35,10 +36,11 @@ function Login() {
         setMessage("Invalid email or password.");
       }
     } catch (error) {
-      console.error('Error:', error);
-      setMessage('An error occurred during login');
+      console.error("Error:", error);
+      setMessage("An error occurred during login.");
     }
-  }
+  };
+  
   return (
     <div>
       <Navbar />
