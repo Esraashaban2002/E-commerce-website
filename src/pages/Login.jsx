@@ -20,7 +20,7 @@ function Login() {
   const handleSubmit = async (e)=>{
     e.preventDefault()
     try {
-      const response = await axios.get(`http://localhost:5000/users?email=${formData.email}&password=${formData.password}`);
+      const response = await axios.get(`http://localhost:8080/users?email=${formData.email}&password=${formData.password}`);
       if (response.data.length > 0) {
         const userData = response.data[0]
         setMessage('User Login successfully!');
